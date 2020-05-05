@@ -59,7 +59,7 @@ TEST(PiezasTest, dropPiece_2_3_is_O)
     ASSERT_EQ(game.dropPiece(3), O);
 }
 
-TEST(PiezasTest, dropPiece_fillBoard_is_O)
+TEST(PiezasTest, dropPiece_fillBoardInOrder_is_O)
 {
     Piezas game;
     game.dropPiece(0);
@@ -76,7 +76,7 @@ TEST(PiezasTest, dropPiece_fillBoard_is_O)
     ASSERT_EQ(game.dropPiece(3), O);
 }
 
-TEST(PiezasTest, dropPiece_fillBoard_is_O)
+TEST(PiezasTest, dropPiece_fillBoardRandom_is_O)
 {
     Piezas game;
     game.dropPiece(0);
