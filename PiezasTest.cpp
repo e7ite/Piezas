@@ -33,7 +33,7 @@ TEST(PiezasTest, pieceAt_1_1)
     Piezas game;
     game.dropPiece(1);
     game.dropPiece(1);
-    ASSERT_EQ(game.pieceAt(1, 1), X);
+    ASSERT_EQ(game.pieceAt(1, 1), O);
 }
 
 // BEGIN Piezas::reset TESTS
