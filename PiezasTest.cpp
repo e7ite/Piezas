@@ -147,14 +147,14 @@ TEST(PiezasTest, dropPiece_0_neg1_is_Invalid)
 
 // BEGIN Piezas::pieceAt HAPPY TESTS
 
-TEST(PiezasTest, pieceAt_0_0)
+TEST(PiezasTest, pieceAt_0_0_is_X)
 {
     Piezas game;
     game.dropPiece(1);
     ASSERT_EQ(game.pieceAt(0, 1), X);
 }
 
-TEST(PiezasTest, pieceAt_1_1)
+TEST(PiezasTest, pieceAt_1_1_is_O)
 {
     Piezas game;
     game.dropPiece(1);
@@ -162,7 +162,7 @@ TEST(PiezasTest, pieceAt_1_1)
     ASSERT_EQ(game.pieceAt(1, 1), O);
 }
 
-TEST(PiezasTest, pieceAt_2_2)
+TEST(PiezasTest, pieceAt_2_2_is_X)
 {
     Piezas game;
     game.dropPiece(2);
@@ -171,7 +171,7 @@ TEST(PiezasTest, pieceAt_2_2)
     ASSERT_EQ(game.pieceAt(2, 2), X);
 }
 
-TEST(PiezasTest, pieceAt_3_2)
+TEST(PiezasTest, pieceAt_3_2_is_X)
 {
     Piezas game;
     game.dropPiece(2);
@@ -180,7 +180,7 @@ TEST(PiezasTest, pieceAt_3_2)
     ASSERT_EQ(game.pieceAt(2, 2), X);
 }
 
-TEST(PiezasTest, pieceAt_halfBoardRandom_pieceAt_0_3)
+TEST(PiezasTest, pieceAt_halfBoardRandom_pieceAt_0_3_is_O)
 {
     Piezas game;
     game.dropPiece(0);
@@ -189,7 +189,7 @@ TEST(PiezasTest, pieceAt_halfBoardRandom_pieceAt_0_3)
     game.dropPiece(0);
     game.dropPiece(0);
     game.dropPiece(1);
-    ASSERT_EQ(game.pieceAt(0, 3), X);
+    ASSERT_EQ(game.pieceAt(1, 0), O);
 }
 
 TEST(PiezasTest, pieceAt_fillBoardRandom_pieceAt_2_0)
@@ -210,13 +210,70 @@ TEST(PiezasTest, pieceAt_fillBoardRandom_pieceAt_2_0)
     ASSERT_EQ(game.pieceAt(2, 0), O);
 }
 
+// BEGIN Piezas::pieceAt SAD TESTS
+
+TEST(PiezasTest, pieceAt_2_3_is_Blank)
+{
+    Piezas game;
+    ASSERT_EQ(game.pieceAt(2, 3), Blank);
+}
+
+TEST(PiezasTest, pieceAt_fillBoardRandom_pieceAt_2_1_is_Blank)
+{
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(3);
+    ASSERT_EQ(game.pieceAt(2, 1), Blank);
+}
+
+TEST(PiezasTest, pieceAt_3_0_is_Invalid)
+{
+    Piezas game;
+    ASSERT_EQ(game.pieceAt(3, 0), Invalid);
+}
+
+TEST(PiezasTest, pieceAt_neg1_0_is_Invalid)
+{
+    Piezas game;
+    ASSERT_EQ(game.pieceAt(-1, 0), Invalid);
+}
+
+TEST(PiezasTest, pieceAt_0_4_is_Invalid)
+{
+    Piezas game;
+    ASSERT_EQ(game.pieceAt(0, 4), Invalid);
+}
+
+TEST(PiezasTest, pieceAt_0_neg3_is_Invalid)
+{
+    Piezas game;
+    ASSERT_EQ(game.pieceAt(0, -3), Invalid);
+}
+
 // BEGIN Piezas::reset TESTS
 
 TEST(PiezasTest, reset_board_check)
 {
     Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(3);
     game.dropPiece(1);
     game.dropPiece(2);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(2);
+    game.dropPiece(0);
     game.dropPiece(3);
     game.reset();
 	ASSERT_EQ(game.pieceAt(0, 0), Blank);
