@@ -22,7 +22,7 @@
 **/
 Piezas::Piezas()
 {
-    this->board.resize(3);
+    this->board.resize(4);
     this->turn = X;
 }
 
@@ -32,8 +32,8 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
-    for (auto i : this->board)
-        for (auto j : i)
+    for (auto& i : this->board)
+        for (auto& j : i)
             j = Blank;
 }
 
