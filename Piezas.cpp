@@ -22,6 +22,9 @@
 **/
 Piezas::Piezas()
 {
+    this->board.reserve(3);
+    for (int i = 0; i < 4; i++)
+        this->board.emplace_back();
 }
 
 /**
