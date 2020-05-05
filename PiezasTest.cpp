@@ -296,9 +296,10 @@ TEST(PiezasTest, reset_board_check)
 TEST(PiezasTest, gameState_xWinsVert)
 {
     /* 
-        X O O X
-        X X O O
-        X O X O
+      2 X O O X
+      1 X X O O
+      0 X O X O
+        0 1 2 3
     */
     Piezas game;
     game.dropPiece(0);
@@ -318,33 +319,35 @@ TEST(PiezasTest, gameState_xWinsVert)
 
 TEST(PiezasTest, gameState_oWinsHoriz)
 {
-    /*      
-        O O O O
-        X X O X
-        X X O X
+     /*
+      2 O O O O
+      1 X O X X
+      0 X X O X
+        0 1 2 3
     */
     Piezas game;
-    game.dropPiece(0);
-    game.dropPiece(2);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(1);
-    game.dropPiece(0);
-    game.dropPiece(3);
-    game.dropPiece(1);
-    game.dropPiece(3);
-    game.dropPiece(3);
+    game.dropPiece(3); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(2); // O
+    game.dropPiece(1); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(0); // O
 	ASSERT_EQ(game.gameState(), O);
 }
 
 TEST(PiezasTest, gameState_xWinsHoriz)
 {
     /*
-        O X O O
-        X X X X
-        O O O X
+      2 O X O O
+      1 X X X X
+      0 O O O X
+        0 1 2 3
     */
     Piezas game;
     game.dropPiece(3);
