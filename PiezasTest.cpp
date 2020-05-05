@@ -132,6 +132,7 @@ TEST(PiezasTest, dropPiece_fillBoardOneOver_is_Blank)
     game.dropPiece(3);
     ASSERT_EQ(game.dropPiece(3), Blank);
 }
+
 TEST(PiezasTest, dropPiece_0_4_is_Invalid)
 {
     Piezas game;
@@ -177,6 +178,36 @@ TEST(PiezasTest, pieceAt_3_2)
     game.dropPiece(2);
     game.dropPiece(2);
     ASSERT_EQ(game.pieceAt(2, 2), X);
+}
+
+TEST(PiezasTest, pieceAt_halfBoardRandom_pieceAt_0_3)
+{
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(0);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    ASSERT_EQ(game.pieceAt(0, 3), X);
+}
+
+TEST(PiezasTest, pieceAt_fillBoardRandom_pieceAt_2_0)
+{
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    ASSERT_EQ(game.pieceAt(2, 0), O);
 }
 
 // BEGIN Piezas::reset TESTS
