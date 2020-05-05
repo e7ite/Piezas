@@ -57,7 +57,7 @@ Piece Piezas::dropPiece(int column)
         return oldPiece;
     };
 
-    if (column > 4 || column < 0)
+    if (column > 3 || column < 0)
     {
         ChangeTurn();
         return Invalid;
