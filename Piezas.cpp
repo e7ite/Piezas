@@ -49,10 +49,12 @@ Piece Piezas::dropPiece(int column)
 {
     auto ChangeTurn = [this]()
     {
+        Piece oldPiece = this->turn;
         if (this->turn == X)
             this->turn = O;
         else if (this->turn == O)
             this->turn = X;
+        return oldPiece;
     };
 
     if (column > 4 || column < 0)
@@ -67,8 +69,7 @@ Piece Piezas::dropPiece(int column)
     }
 
     this->board[column].push_back(this->turn);
-    ChangeTurn();
-    return Blank;
+    return ChangeTurn();
 }
 
 /**
