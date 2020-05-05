@@ -275,6 +275,7 @@ TEST(PiezasTest, reset_board_check)
     game.dropPiece(2);
     game.dropPiece(0);
     game.dropPiece(3);
+    game.dropPiece(1);
     game.reset();
 	ASSERT_EQ(game.pieceAt(0, 0), Blank);
 	ASSERT_EQ(game.pieceAt(0, 1), Blank);
@@ -288,4 +289,75 @@ TEST(PiezasTest, reset_board_check)
 	ASSERT_EQ(game.pieceAt(2, 1), Blank);
 	ASSERT_EQ(game.pieceAt(2, 2), Blank);
 	ASSERT_EQ(game.pieceAt(2, 3), Blank);
+}
+
+// BEGIN Piezas::gameState HAPPY TESTS
+
+TEST(PiezasTest, gameState_xWinsVert)
+{
+    /* 
+        X O O X
+        X X O O
+        X O X O
+    */
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(2);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(3);
+    game.dropPiece(1);
+	ASSERT_EQ(game.gameState(), X);
+}
+
+TEST(PiezasTest, gameState_oWinsHoriz)
+{
+    /*      
+        O O O O
+        X X O X
+        X X O X
+    */
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(2);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(1);
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(3);
+	ASSERT_EQ(game.gameState(), O);
+}
+
+TEST(PiezasTest, gameState_xWinsHoriz)
+{
+    /*
+        O X O O
+        X X X X
+        O O O X
+    */
+    Piezas game;
+    game.dropPiece(3);
+    game.dropPiece(2);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(0);
+    game.dropPiece(2);
+    game.dropPiece(1);
+    game.dropPiece(0);
+	ASSERT_EQ(game.gameState(), X);
 }
