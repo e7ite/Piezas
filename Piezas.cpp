@@ -22,9 +22,8 @@
 **/
 Piezas::Piezas()
 {
-    this->board.reserve(3);
-    for (int i = 0; i < 4; i++)
-        this->board.emplace_back();
+    this->board.resize(3);
+    this->turn = X;
 }
 
 /**
@@ -33,6 +32,9 @@ Piezas::Piezas()
 **/
 void Piezas::reset()
 {
+    for (auto i : this->board)
+        for (auto j : i)
+            j = Blank;
 }
 
 /**
@@ -45,6 +47,27 @@ void Piezas::reset()
 **/ 
 Piece Piezas::dropPiece(int column)
 {
+    auto ChangeTurn = [this]()
+    {
+        if (this->turn == X)
+            this->turn = O;
+        else if (this->turn == O)
+            this->turn = X;
+    };
+
+    if (column > 4 || column < 0)
+    {
+        ChangeTurn();
+        return Invalid;
+    }
+    else if (this->board[column].size() == 3)
+    {
+        ChangeTurn();
+        return Blank;
+    }
+
+    this->board[column].push_back(this->turn);
+    ChangeTurn();
     return Blank;
 }
 
@@ -54,7 +77,16 @@ Piece Piezas::dropPiece(int column)
 **/
 Piece Piezas::pieceAt(int row, int column)
 {
-    return Blank;
+    if (row > 2 || row < 0 || column > 3 || column < 0)
+        return Invalid;
+    try
+    {
+        return this->board.at(column).at(row);
+    }
+    catch (const std::exception& ex)
+    {
+        return Blank;
+    }
 }
 
 /**
@@ -68,5 +100,43 @@ Piece Piezas::pieceAt(int row, int column)
 **/
 Piece Piezas::gameState()
 {
+    int xRow = 0, xCol = 0, oRow = 0, oCol = 0;
+    int curXCol = 0, curOCol = 0;
+    int curXRow[3] = { 0 }, curORow[3] = { 0 };
+    for (int i = 0; i < 4; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            switch (this->pieceAt(j, i))
+            {
+                case X:
+                    curXRow[j]++;
+                    curXCol++;
+                    break;
+                case O:
+                    curORow[j]++;
+                    curOCol++;
+                    break;
+                default:
+                    return Invalid;
+            }
+        }
+
+        xCol = std::max(xCol, curXCol);
+        oCol = std::max(oCol, curOCol);
+    }
+
+    for (int i = 0; i < 3; i++)
+    {
+        oRow = std::max(oRow, curORow[i]);
+        xRow = std::max(xRow, curXRow[i]);
+    }
+    xRow = std::max(xRow, xCol);
+    oRow = std::max(oRow, oCol);
+
+    if (xRow > oRow)
+        return X;
+    if (xRow < oRow)
+        return O;
     return Blank;
 }
