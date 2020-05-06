@@ -533,18 +533,24 @@ TEST(PiezasTest, gameState_notFinished1)
 
 TEST(PiezasTest, pieceAt_notFinished2)
 {
+    /* 
+      2 O X   X
+      1 O X X O
+      0 X X O O 
+        0 1 2 3
+    */
     Piezas game;
-    game.dropPiece(0);
-    game.dropPiece(3);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(2);
-    game.dropPiece(0);
-    game.dropPiece(1);
-    game.dropPiece(3);
-    game.dropPiece(2);
-    game.dropPiece(0);
-    game.dropPiece(3);
+    game.dropPiece(0); // X  
+    game.dropPiece(3); // O  
+    game.dropPiece(1); // X 
+    game.dropPiece(2); // O 
+    game.dropPiece(2); // X 
+    game.dropPiece(0); // O 
+    game.dropPiece(1); // X 
+    game.dropPiece(3); // O 
+    game.dropPiece(2); // X 
+    game.dropPiece(0); // O 
+    game.dropPiece(3); // X 
     ASSERT_EQ(game.gameState(), Invalid);
 }
 
