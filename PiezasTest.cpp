@@ -528,7 +528,7 @@ TEST(PiezasTest, gameState_notFinished1)
     game.dropPiece(2); // O
     game.dropPiece(3); // X
     game.dropPiece(3); // O
-	ASSERT_EQ(game.gameState(), Invalid);
+    ASSERT_EQ(game.gameState(), Invalid);
 }
 
 TEST(PiezasTest, pieceAt_notFinished2)
