@@ -114,10 +114,12 @@ Piece Piezas::gameState()
                 case X:
                     curXRow[j]++;
                     curXCol++;
+                    curORow[j] = 0;
                     break;
                 case O:
                     curORow[j]++;
                     curOCol++;
+                    curXRow[j] = 0;
                     break;
                 default:
                     return Invalid;
@@ -133,6 +135,7 @@ Piece Piezas::gameState()
         xRow = std::max(xRow, curXRow[i]);
         oRow = std::max(oRow, curORow[i]);
     }
+
     xRow = std::max(xRow, xCol);
     oRow = std::max(oRow, oCol);
 
