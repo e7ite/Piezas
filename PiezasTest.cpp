@@ -293,7 +293,7 @@ TEST(PiezasTest, reset_board_check)
 
 // BEGIN Piezas::gameState HAPPY TESTS
 
-TEST(PiezasTest, gameState_xWinsVert)
+TEST(PiezasTest, gameState_xWinsVert_col0)
 {
     /* 
       2 X O O X
@@ -317,7 +317,7 @@ TEST(PiezasTest, gameState_xWinsVert)
 	ASSERT_EQ(game.gameState(), X);
 }
 
-TEST(PiezasTest, gameState_oWinsVert)
+TEST(PiezasTest, gameState_oWinsVert_col1)
 {
     /* 
       2 X O O O
@@ -342,7 +342,7 @@ TEST(PiezasTest, gameState_oWinsVert)
 }
 
 
-TEST(PiezasTest, gameState_xWinsVert)
+TEST(PiezasTest, gameState_xWinsVert_col2)
 {
     /* 
       2 O O X X
@@ -366,7 +366,7 @@ TEST(PiezasTest, gameState_xWinsVert)
 	ASSERT_EQ(game.gameState(), X);
 }
 
-TEST(PiezasTest, gameState_oWinsVert)
+TEST(PiezasTest, gameState_oWinsVert_col3)
 {
     /* 
       2 X X O O
@@ -390,7 +390,7 @@ TEST(PiezasTest, gameState_oWinsVert)
 	ASSERT_EQ(game.gameState(), O);
 }
 
-TEST(PiezasTest, gameState_oWinsHoriz)
+TEST(PiezasTest, gameState_oWinsHoriz_row2)
 {
     /*
       2 O O O O
@@ -414,7 +414,7 @@ TEST(PiezasTest, gameState_oWinsHoriz)
 	ASSERT_EQ(game.gameState(), O);
 }
 
-TEST(PiezasTest, gameState_xWinsHoriz)
+TEST(PiezasTest, gameState_xWinsHoriz_row1)
 {
     /*
       2 O X O O
@@ -438,7 +438,7 @@ TEST(PiezasTest, gameState_xWinsHoriz)
 	ASSERT_EQ(game.gameState(), X);
 }
 
-TEST(PiezasTest, gameState_xWinsHoriz)
+TEST(PiezasTest, gameState_xWinsHoriz_row0)
 {
     /*
       2 X O O O
