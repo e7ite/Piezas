@@ -135,7 +135,6 @@ Piece Piezas::gameState()
         xRow = std::max(xRow, curXRow[i]);
         oRow = std::max(oRow, curORow[i]);
     }
-
     xRow = std::max(xRow, xCol);
     oRow = std::max(oRow, oCol);
 

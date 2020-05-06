@@ -341,7 +341,6 @@ TEST(PiezasTest, gameState_oWinsVert_col1)
 	ASSERT_EQ(game.gameState(), O);
 }
 
-
 TEST(PiezasTest, gameState_xWinsVert_col2)
 {
     /* 
@@ -460,4 +459,103 @@ TEST(PiezasTest, gameState_xWinsHoriz_row0)
     game.dropPiece(0); // X
     game.dropPiece(1); // O
 	ASSERT_EQ(game.gameState(), X);
+}
+
+TEST(PiezasTest, gameState_draw_col3col2)
+{
+    /* 
+      2 X O X O
+      1 X O X O
+      0 O X X O
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(1); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(0); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(1); // O
+	ASSERT_EQ(game.gameState(), Blank);
+}
+
+TEST(PiezasTest, gameState_draw_row0row1)
+{
+    /* 
+      2 X O X O
+      1 O O O O
+      0 X X X X
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(1); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(0); // O
+    game.dropPiece(2); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(3); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(3); // O
+	ASSERT_EQ(game.gameState(), Blank);
+}
+
+// BEGIN Piezas::gameState SAD TESTS
+
+TEST(PiezasTest, gameState_notFinished1)
+{
+    /* 
+      2
+      1 O O O O
+      0 X X X X
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(1); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(0); // O
+    game.dropPiece(2); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(3); // O
+	ASSERT_EQ(game.gameState(), Invalid);
+}
+
+TEST(PiezasTest, pieceAt_notFinished2)
+{
+    Piezas game;
+    game.dropPiece(0);
+    game.dropPiece(3);
+    game.dropPiece(1);
+    game.dropPiece(2);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(1);
+    game.dropPiece(3);
+    game.dropPiece(2);
+    game.dropPiece(0);
+    game.dropPiece(3);
+    ASSERT_EQ(game.gameState(), Invalid);
+}
+
+TEST(PiezasTest, gameState_notFinished3)
+{
+    /* 
+      2
+      1 
+      0 
+        0 1 2 3
+    */
+    Piezas game;
+    ASSERT_EQ(game.gameState(), Invalid);
 }
