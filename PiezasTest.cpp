@@ -302,24 +302,97 @@ TEST(PiezasTest, gameState_xWinsVert)
         0 1 2 3
     */
     Piezas game;
-    game.dropPiece(0);
-    game.dropPiece(3);
-    game.dropPiece(0);
-    game.dropPiece(3);
-    game.dropPiece(0);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(2);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(3);
-    game.dropPiece(1);
+    game.dropPiece(0); // X
+    game.dropPiece(3); // O
+    game.dropPiece(0); // X
+    game.dropPiece(3); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(2); // O
+    game.dropPiece(1); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(1); // O
 	ASSERT_EQ(game.gameState(), X);
+}
+
+TEST(PiezasTest, gameState_oWinsVert)
+{
+    /* 
+      2 X O O O
+      1 O O X X
+      0 X O X X
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(3); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(0); // O
+    game.dropPiece(0); // X
+    game.dropPiece(3); // O
+	ASSERT_EQ(game.gameState(), O);
+}
+
+
+TEST(PiezasTest, gameState_xWinsVert)
+{
+    /* 
+      2 O O X X
+      1 X X X O
+      0 O O X O
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(2); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(0); // O
+    game.dropPiece(0); // X
+    game.dropPiece(0); // O
+    game.dropPiece(1); // X
+    game.dropPiece(3); // O
+    game.dropPiece(3); // X
+    game.dropPiece(1); // O
+	ASSERT_EQ(game.gameState(), X);
+}
+
+TEST(PiezasTest, gameState_oWinsVert)
+{
+    /* 
+      2 X X O O
+      1 X O X O
+      0 O X X O
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(1); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(0); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(2); // O
+    game.dropPiece(1); // X
+    game.dropPiece(3); // O
+	ASSERT_EQ(game.gameState(), O);
 }
 
 TEST(PiezasTest, gameState_oWinsHoriz)
 {
-     /*
+    /*
       2 O O O O
       1 X O X X
       0 X X O X
@@ -350,17 +423,41 @@ TEST(PiezasTest, gameState_xWinsHoriz)
         0 1 2 3
     */
     Piezas game;
-    game.dropPiece(3);
-    game.dropPiece(2);
-    game.dropPiece(3);
-    game.dropPiece(1);
-    game.dropPiece(2);
-    game.dropPiece(0);
-    game.dropPiece(1);
-    game.dropPiece(3);
-    game.dropPiece(0);
-    game.dropPiece(2);
-    game.dropPiece(1);
-    game.dropPiece(0);
+    game.dropPiece(3); // X
+    game.dropPiece(2); // O
+    game.dropPiece(3); // X
+    game.dropPiece(1); // O
+    game.dropPiece(2); // X
+    game.dropPiece(0); // O
+    game.dropPiece(1); // X
+    game.dropPiece(3); // O
+    game.dropPiece(0); // X
+    game.dropPiece(2); // O
+    game.dropPiece(1); // X
+    game.dropPiece(0); // O
+	ASSERT_EQ(game.gameState(), X);
+}
+
+TEST(PiezasTest, gameState_xWinsHoriz)
+{
+    /*
+      2 X O O O
+      1 X O O O
+      0 X X X X
+        0 1 2 3
+    */
+    Piezas game;
+    game.dropPiece(3); // X
+    game.dropPiece(3); // O
+    game.dropPiece(2); // X
+    game.dropPiece(3); // O
+    game.dropPiece(1); // X
+    game.dropPiece(2); // O
+    game.dropPiece(0); // X
+    game.dropPiece(2); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
+    game.dropPiece(0); // X
+    game.dropPiece(1); // O
 	ASSERT_EQ(game.gameState(), X);
 }

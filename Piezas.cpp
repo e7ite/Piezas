@@ -102,8 +102,8 @@ Piece Piezas::pieceAt(int row, int column)
 Piece Piezas::gameState()
 {
     int xRow = 0, xCol = 0, oRow = 0, oCol = 0;
-
     int curXRow[3] = { 0 }, curORow[3] = { 0 };
+
     for (int i = 0; i < 4; i++)
     {
         int curXCol = 0, curOCol = 0;
