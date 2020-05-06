@@ -8,15 +8,15 @@
 class PiezasTest : public ::testing::Test
 {
 	protected:
-		PiezasTest(){} //constructor runs before each test
-		virtual ~PiezasTest(){} //destructor cleans up after tests
-		virtual void SetUp(){} //sets up before each test (after constructor)
-		virtual void TearDown(){} //clean up after each test, (before destructor) 
+        PiezasTest(){} //constructor runs before each test
+        virtual ~PiezasTest(){} //destructor cleans up after tests
+        virtual void SetUp(){} //sets up before each test (after constructor)
+        virtual void TearDown(){} //clean up after each test, (before destructor) 
 };
 
 TEST(PiezasTest, sanityCheck)
 {
-	ASSERT_TRUE(true);
+    ASSERT_TRUE(true);
 }
 
 // BEGIN Piezas::dropPiece HAPPY TESTS
@@ -277,18 +277,18 @@ TEST(PiezasTest, reset_board_check)
     game.dropPiece(3);
     game.dropPiece(1);
     game.reset();
-	ASSERT_EQ(game.pieceAt(0, 0), Blank);
-	ASSERT_EQ(game.pieceAt(0, 1), Blank);
-	ASSERT_EQ(game.pieceAt(0, 2), Blank);
-	ASSERT_EQ(game.pieceAt(0, 3), Blank);
+    ASSERT_EQ(game.pieceAt(0, 0), Blank);
+    ASSERT_EQ(game.pieceAt(0, 1), Blank);
+    ASSERT_EQ(game.pieceAt(0, 2), Blank);
+    ASSERT_EQ(game.pieceAt(0, 3), Blank);
     ASSERT_EQ(game.pieceAt(1, 0), Blank);
-	ASSERT_EQ(game.pieceAt(1, 1), Blank);
-	ASSERT_EQ(game.pieceAt(1, 2), Blank);
-	ASSERT_EQ(game.pieceAt(1, 3), Blank);
+    ASSERT_EQ(game.pieceAt(1, 1), Blank);
+    ASSERT_EQ(game.pieceAt(1, 2), Blank);
+    ASSERT_EQ(game.pieceAt(1, 3), Blank);
     ASSERT_EQ(game.pieceAt(2, 0), Blank);
-	ASSERT_EQ(game.pieceAt(2, 1), Blank);
-	ASSERT_EQ(game.pieceAt(2, 2), Blank);
-	ASSERT_EQ(game.pieceAt(2, 3), Blank);
+    ASSERT_EQ(game.pieceAt(2, 1), Blank);
+    ASSERT_EQ(game.pieceAt(2, 2), Blank);
+    ASSERT_EQ(game.pieceAt(2, 3), Blank);
 }
 
 // BEGIN Piezas::gameState HAPPY TESTS
@@ -314,7 +314,7 @@ TEST(PiezasTest, gameState_xWinsVert_col0)
     game.dropPiece(2); // O
     game.dropPiece(3); // X
     game.dropPiece(1); // O
-	ASSERT_EQ(game.gameState(), X);
+    ASSERT_EQ(game.gameState(), X);
 }
 
 TEST(PiezasTest, gameState_oWinsVert_col1)
@@ -338,7 +338,7 @@ TEST(PiezasTest, gameState_oWinsVert_col1)
     game.dropPiece(0); // O
     game.dropPiece(0); // X
     game.dropPiece(3); // O
-	ASSERT_EQ(game.gameState(), O);
+    ASSERT_EQ(game.gameState(), O);
 }
 
 TEST(PiezasTest, gameState_xWinsVert_col2)
@@ -362,7 +362,7 @@ TEST(PiezasTest, gameState_xWinsVert_col2)
     game.dropPiece(3); // O
     game.dropPiece(3); // X
     game.dropPiece(1); // O
-	ASSERT_EQ(game.gameState(), X);
+    ASSERT_EQ(game.gameState(), X);
 }
 
 TEST(PiezasTest, gameState_oWinsVert_col3)
@@ -386,7 +386,7 @@ TEST(PiezasTest, gameState_oWinsVert_col3)
     game.dropPiece(2); // O
     game.dropPiece(1); // X
     game.dropPiece(3); // O
-	ASSERT_EQ(game.gameState(), O);
+    ASSERT_EQ(game.gameState(), O);
 }
 
 TEST(PiezasTest, gameState_oWinsHoriz_row2)
@@ -410,7 +410,7 @@ TEST(PiezasTest, gameState_oWinsHoriz_row2)
     game.dropPiece(1); // O
     game.dropPiece(0); // X
     game.dropPiece(0); // O
-	ASSERT_EQ(game.gameState(), O);
+    ASSERT_EQ(game.gameState(), O);
 }
 
 TEST(PiezasTest, gameState_xWinsHoriz_row1)
@@ -434,7 +434,7 @@ TEST(PiezasTest, gameState_xWinsHoriz_row1)
     game.dropPiece(2); // O
     game.dropPiece(1); // X
     game.dropPiece(0); // O
-	ASSERT_EQ(game.gameState(), X);
+    ASSERT_EQ(game.gameState(), X);
 }
 
 TEST(PiezasTest, gameState_xWinsHoriz_row0)
@@ -458,7 +458,7 @@ TEST(PiezasTest, gameState_xWinsHoriz_row0)
     game.dropPiece(1); // O
     game.dropPiece(0); // X
     game.dropPiece(1); // O
-	ASSERT_EQ(game.gameState(), X);
+    ASSERT_EQ(game.gameState(), X);
 }
 
 TEST(PiezasTest, gameState_draw_col3col2)
@@ -482,7 +482,7 @@ TEST(PiezasTest, gameState_draw_col3col2)
     game.dropPiece(3); // O
     game.dropPiece(2); // X
     game.dropPiece(1); // O
-	ASSERT_EQ(game.gameState(), Blank);
+    ASSERT_EQ(game.gameState(), Blank);
 }
 
 TEST(PiezasTest, gameState_draw_row0row1)
@@ -506,7 +506,7 @@ TEST(PiezasTest, gameState_draw_row0row1)
     game.dropPiece(1); // O
     game.dropPiece(2); // X
     game.dropPiece(3); // O
-	ASSERT_EQ(game.gameState(), Blank);
+    ASSERT_EQ(game.gameState(), Blank);
 }
 
 // BEGIN Piezas::gameState SAD TESTS
